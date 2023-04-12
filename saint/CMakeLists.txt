@@ -1,6 +1,8 @@
 add_executable(tempo-detection-eval
   main.cpp
   WavFileReader.cpp
+  BpmEstimator.cpp
+  estimators/MiniBpmEstimator.cpp
 )
 
 target_link_libraries(tempo-detection-eval
