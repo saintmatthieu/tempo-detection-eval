@@ -2,6 +2,7 @@
 
 namespace fs = std::filesystem;
 
+namespace saint {
 namespace {
 std::unique_ptr<juce::AudioFormatReader>
 getJuceWavFileReader(const fs::path &path) {
@@ -32,3 +33,4 @@ void WavFileReader::read(float *audio, int size) {
                     static_cast<juce::int64>(_numReadSamples), size);
   _numReadSamples += size;
 }
+} // namespace saint
