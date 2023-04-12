@@ -7,3 +7,6 @@
 [submodule "opus"]
 	path = opus
 	url = https://github.com/xiph/opus.git
+[submodule "opusfile"]
+	path = opusfile
+	url = https://github.com/xiph/opusfile.git
