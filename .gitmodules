@@ -4,3 +4,6 @@
 [submodule "minibpm"]
 	path = minibpm
 	url = https://github.com/saintmatthieu/minibpm.git
+[submodule "opus"]
+	path = opus
+	url = https://github.com/xiph/opus.git
