@@ -9,4 +9,5 @@ target_link_libraries(tempo-detection-eval
   juce::juce_audio_utils
   juce::juce_audio_formats
   MiniBpm
+  opusfile
 )
