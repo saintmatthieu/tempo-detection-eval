@@ -1,6 +1,7 @@
 add_library(wavfile
   WavFileReader.cpp
   StereoWavFileWriter.cpp
+  ProgressBar.cpp
 )
 
 target_link_libraries(wavfile PUBLIC 

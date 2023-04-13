@@ -9,7 +9,7 @@ namespace saint {
 class WavFileReader {
 public:
   WavFileReader(const std::filesystem::path &path);
-  int getNumSamplesAvailable() const;
+  int getNumSamplesPerChannelAvailable() const;
   int getSampleRate() const;
   void read(float *, int);
 

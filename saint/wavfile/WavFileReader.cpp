@@ -17,7 +17,7 @@ getJuceWavFileReader(const fs::path &path) {
 WavFileReader::WavFileReader(const fs::path &path)
     : _juceReader(getJuceWavFileReader(path)) {}
 
-int WavFileReader::getNumSamplesAvailable() const {
+int WavFileReader::getNumSamplesPerChannelAvailable() const {
   return std::max(
       static_cast<int>(_juceReader->lengthInSamples) - _numReadSamples, 0);
 }
