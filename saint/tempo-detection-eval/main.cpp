@@ -1,8 +1,6 @@
 #include "BpmEstimator.h"
 #include "WavFileReader.h"
 
-#include "opusfile.h"
-
 #include <filesystem>
 #include <fstream>
 #include <iostream>
@@ -24,35 +22,9 @@ int main(int argc, char **argv) {
   std::vector<std::optional<int>> tempi;
   for (const auto &entry : fs::recursive_directory_iterator(audioDir)) {
     const fs::path path = entry;
-    if (path.extension() != ".opus") {
+    if (path.extension() != ".wav") {
       continue;
     }
-    auto err = 0;
-    const auto file = op_open_file(path.string().c_str(), &err);
-    const auto tags = op_tags(file, 0);
-    std::optional<int> bpm;
-    std::string type;
-    for (auto i = 0; i < tags->comments; ++i) {
-      const std::string comment = tags->user_comments[i];
-      if (comment.find("Type") == 0u || comment.find("TYPE") == 0) {
-        type = {comment.begin() + 5, comment.end()};
-      } else if (comment.find("BPM") == 0u) {
-        bpm = std::stoi(std::string{comment.begin() + 4, comment.end()});
-      }
-    }
-    if (type.empty()) {
-      std::cerr << "Could not parse type of " << path << std::endl;
-      continue;
-    }
-    if (type == "loop" && !bpm.has_value()) {
-      std::cerr << "Could not find BPM value for loop " << path << std::endl;
-      continue;
-    }
-    if (type == "one_shot" && bpm.has_value()) {
-      std::cout << "one_shot with BPM ?? found for " << path << std::endl;
-    }
-    files.push_back(path);
-    tempi.push_back(bpm);
   }
 
   using Solution = saint::BpmEstimator::Solution;

@@ -6,7 +6,10 @@
       "type": "cppvsdbg",
       "request": "launch",
       "program": "${command:cmake.launchTargetPath}",
-      "args": ["C:\\Users\\saint\\Downloads\\OPUS Elements\\OPUS Elements"],
+      "args": [
+        "C:\\Users\\saint\\Downloads\\OPUS Elements\\OPUS Elements",
+        "C:\\Users\\saint\\Downloads\\MuseHub_Files"
+      ],
       "stopAtEntry": false,
       "cwd": "${workspaceFolder}",
       "console": "integratedTerminal"
